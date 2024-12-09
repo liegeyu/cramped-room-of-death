@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Start EVA JS
 
 This repository is a EVA JS project demo, you can use this demo to start a EVA JS project.
@@ -48,7 +47,9 @@ start-demo
 └─ webpack.config.js
 
 ```
+
 =======
+
 # cramped-room-of-death
+
 Cramped Room Of Death 游戏
->>>>>>> 4b3fd5deb143229ba138db4b0c48f371ef97ddf8
