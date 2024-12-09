@@ -1,7 +1,9 @@
-const path = require('path')
-const webpack = require('webpack')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const { ESBuildMinifyPlugin } = require('esbuild-loader')
+const path = require('path');
+const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -24,13 +26,14 @@ const { ESBuildMinifyPlugin } = require('esbuild-loader')
  *
  */
 
+const target = path.resolve(__dirname, './docs');
+
 module.exports = {
   mode: 'development',
   entry: './src/index.ts',
-  plugins: [new webpack.ProgressPlugin()],
   devtool: 'inline-source-map',
   output: {
-    path: __dirname + '/docs',
+    path: target,
     filename: 'main.js',
   },
   module: {
@@ -73,20 +76,30 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     fallback: { path: require.resolve('path-browserify') },
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
   },
 
   devServer: {
     port: 9000,
     compress: true,
-    contentBase: path.join(__dirname, 'docs'),
-    allowedHosts: [''],
   },
 
   plugins: [
-    new CleanWebpackPlugin({
-      root: __dirname + '/docs',
-      cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['main.js'],
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './index.html'),
+      title: 'cramped room of death',
+    }),
+    new webpack.ProgressPlugin(),
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, './static'),
+          to: path.join(target, 'static'),
+        },
+      ],
     }),
   ],
   optimization: {
@@ -96,4 +109,4 @@ module.exports = {
       }),
     ],
   },
-}
+};

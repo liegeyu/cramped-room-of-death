@@ -1,0 +1,41 @@
+// 瓦片地图类型枚举
+export enum TILE_TYPE_ENUM {
+  WALL_LEFT_TOP = 'WALL_LEFT_TOP',
+  WALL_LEFT_BOTTOM = 'WALL_LEFT_BOTTOM',
+  WALL_RIGHT_TOP = 'WALL_RIGHT_TOP',
+  WALL_RIGHT_BOTTOM = 'WALL_RIGHT_BOTTOM',
+  WALL_COLUMN = 'WALL_COLUMN',
+  CLIFF_LEFT = 'CLIFF_LEFT',
+  CLIFF_CENTER = 'CLIFF_CENTER',
+  CLIFF_RIGHT = 'CLIFF_RIGHT',
+  FLOOR = 'FLOOR',
+  WALL_ROW = 'WALL_ROW',
+}
+
+// 事件枚举
+export enum EVENT_ENUM {
+  NEXT_LEVEL = 'NEXT_LEVEL', // 下一关
+  PLAYER_CTRL = 'PLAYER_CTRL', // 玩家控制
+}
+
+// 按钮枚举
+export enum CONTROLLER_ENUM {
+  TOP = 'TOP',
+  BOTTOM = 'BOTTOM',
+  LEFT = 'LEFT',
+  RIGHT = 'RIGHT',
+  TURNLEFT = 'TURNLEFT',
+  TURNRIGHT = 'TURNRIGHT',
+}
+
+// 有限状态机参数枚举
+export enum FSM_PARAMS_TYPE_ENUM {
+  NUMBER = 'NUMBER',
+  TRIGGER = 'TRIGGER',
+}
+
+// 有限状态机状态参数枚举
+export enum PARAMS_NAME_ENUM {
+  IDLE = 'IDLE',
+  TURNLEFT = 'TURNLEFT',
+}

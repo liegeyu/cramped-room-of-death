@@ -21,7 +21,11 @@
     "noImplicitAny": true,
     "target": "es5",
     "allowJs": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"] 
+    }
+
   },
   "include": ["./src/**/*.ts"]
 }
